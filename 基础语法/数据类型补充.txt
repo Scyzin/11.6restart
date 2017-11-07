@@ -1,0 +1,21 @@
+1. 定义long 或者float 类型变量要加l 或者f
+	整数默认int , 浮点数double
+	byte、short 定义的时候，他们接受的是一个int类型的值
+	自己做一个检测，如果不在范围内，就报错
+2.byte值
+	byte b1 =127;
+	byte b4 = (byte)130;
+	
+	byte的范围：-128~127。
+	128		10000000
+	-128	10000000(这里的1是符号位，也是数值位)。
+3.数据类型转换
+		byte、short、char -- int -- long --float --double
+		long:8字节
+		float:4字节
+		
+		底层存储结构不同
+		float表示的数据范围比long的范围大
+		long 2^63-1	float	3.4*10^38
+4.java的字符char可以存储一个中文汉字，占用两个字节
+	采用unicode编码。
