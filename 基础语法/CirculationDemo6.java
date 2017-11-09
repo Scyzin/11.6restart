@@ -27,7 +27,7 @@ class CirculationDemo6{
 				daySum -= 6;
 				System.out.println("第" + dayCount +"天花了6块钱");
 			}
-			dayCount++;
+			dayCount++;//少了这个最后的输出会差很多。
 		}
 	}
 }
