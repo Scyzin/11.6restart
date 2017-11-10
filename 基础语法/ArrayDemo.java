@@ -39,7 +39,10 @@ class ArrayDemo{
 		//左边 数据类型int,数组名arr
 		//右边 new为数组分配空间，3数组个数
 		int [] arr = new int[3];
-		System.out.println(a);//[@175078b 地址值\
+		System.out.println(a);//[@175078b 地址值
+		System.out.println(arr[0]);//0
+		System.out.println(arr[1]);//0
+		System.out.println(arr[2]);//0
 		//数组中每个元素有编号，下标最大为数组长度减1；
 		//[]+下标获取指定编号的元素。 这叫索引。 数组名[索引]。
 		//动态初始化，然后赋值
@@ -51,8 +54,8 @@ class ArrayDemo{
 		int [] ar1 = new int {1,2,3};
 		System.out.println(arr[0]);
 		int [] ar2 = {1,2,3};
-			System.out.println(ar1[0]);
-			System.out.println(ar2[1]);
+			System.out.println(ar1[0]);//1
+			System.out.println(ar2[1]);//2
 			
 	}
 }

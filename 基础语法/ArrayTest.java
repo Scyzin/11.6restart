@@ -24,7 +24,7 @@ class ArrayTest{
 		return max;
 		}
 	}*/
-	
+	//Êı×éÄæĞò
 	public static void reverseArr(int []arr){
 		for(int i=0, j =arr.length -1;i < j; i++, j--){
 			int temp = arr[i];

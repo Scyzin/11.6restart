@@ -15,6 +15,7 @@ class ArrayTest2{
 		int [] arr ={1,2,3,4,5,6};
 		IndexOfFirst(arr);	
 	}
+	//查找某元素，并将其下标输出。
 	public static void IndexOfFirst(int[] arr){
 		int index = -1;
 		for(int i =0; i < arr.length -1;i++){
