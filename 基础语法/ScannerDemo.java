@@ -1,7 +1,7 @@
 /*
 	键盘录入
 		导入包 inmport java.util.Scanner;
-		在类名前面
+		在所有的类名前面
 		创建对象：Scaaner sc = new Scanner(System.in);
 		int x = nextInt();
 */

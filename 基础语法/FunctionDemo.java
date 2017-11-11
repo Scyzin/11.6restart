@@ -20,6 +20,7 @@
 		返回值：程序返回结果，返回给调用者。
 	调用：
 		单独调用无意义。输入调用，不够好。赋值调用最好。
+	括号一定不能忘了。
 */
 import java.util.Scanner;
 class FunctionDemo{
@@ -84,7 +85,6 @@ class FunctionDemo{
 		
 		//继续改进
 		//return (a>b)? (a>c? a: c): (b>c? b: c);
-		//不建议，写代码一定要注意阅读性强
 		int temp = ((a>b)? a: b);
 		int max = ((temp>c)? temp: c);
 		return max;
