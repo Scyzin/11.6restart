@@ -51,7 +51,7 @@ class ConstructDemo{
 		s2.show();
 		System.out.println("-------------");
 		
-		Student s3 = new Student(27);
+		Student s3 = new Student(27);//访问有参数的构造方法
 		s3.show();
 		System.out.println("-------------");
 	}
