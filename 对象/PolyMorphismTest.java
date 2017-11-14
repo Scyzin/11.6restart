@@ -59,6 +59,11 @@ class PolyMorphismTest{
 			//a.playGame(); 调用不了playGame
 			System.out.println("-----");
 			
+			a = new Dog();
+			a.eat();
+			a.sleep();
+			System.out.println("-----");
+			/*
 			//还原为猫
 			Cat c =(Cat)a;
 			c.eat();
@@ -69,7 +74,7 @@ class PolyMorphismTest{
 			//Cat cc = new Animal();编译报错
 			//Cat cc = (Dog)d;编译报错
 			//Cat c = (Cat)d;编译不报错，运行报错
-			
+			*/
 			
 		}
 }

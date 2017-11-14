@@ -38,7 +38,7 @@ class InterImpl extends Object implements Inter {
 //测试类
 class ApiDemo2 {
 	public static void main(String[] args) {
-		//创建对象
+
 		Inter i = new InterImpl();
 		System.out.println(i.num);
 		System.out.println(i.num2);
