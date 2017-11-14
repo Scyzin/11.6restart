@@ -14,7 +14,7 @@
 			
 */
 
-abstract class Animal{
+abstract class Animal{	
 	public int num = 10;
 	
 	public Animal(){}

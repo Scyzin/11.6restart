@@ -26,7 +26,7 @@ interface Inter {
 	public void show(); //默认abstract
 }
 
-//接口名+Impl这种格式是接口的实现类格式
+//接口名+Impl是接口的实现类格式
 class InterImpl extends Object implements Inter {
 	public InterImpl() {
 		super();
