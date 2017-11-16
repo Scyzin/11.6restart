@@ -1,4 +1,4 @@
-### day10 API ###
+##  day10 API object ##
 application programming interface
 
 编程就是可以现学现用  
@@ -49,3 +49,12 @@ protected Object clone()
 > 标记接口  
 > cloneable:此类实现了cloneable接口，指示object.clone()方法可以合法地对该类实例进行字段复制。    
 > 克隆后，更改值不影响原来的值。
+
+==和equals()的区别?  
+
+    A:==
+    基本类型：比较的是值是否相同
+    引用类型：比较的是地址值是否相同
+    B:equals()
+    只能比较引用类型。默认情况下，比较的是地址值是否相同。
+    但是，我们可以根据自己的需要重写该方法。
