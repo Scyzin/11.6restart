@@ -1,0 +1,14 @@
+		String、StingBuffer、StringBuilder区别？
+		String内容不可变，后面两者可变。
+		StringBuffer：同步的，数据安全，效率低。
+		StringBuilder：不同步的，数据不安全，效率高。
+	
+		StringBuffer和数组的区别?
+		 都是容器，用来装其他的数据
+		 但是StringBuffer的数据最终是一个字符串数据
+		 数组的数据可以是多种，但最后是同一种的。
+		 
+		 形式参数问题？
+		 String、StringBuffer
+		 String作为形参，效果和基本类型相似。字符串是常量值。
+		 StringBuffer是引用类型。赋值时，不改变外部的。做操作时，会改变
