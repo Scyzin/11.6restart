@@ -1,5 +1,8 @@
 package collection;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 /*
  * Collection:是集合的顶层接口，它的子体系有重复的，有唯一的，有有序的，
  * 有无序的。
@@ -28,7 +31,26 @@ package collection;
  */
 public class CollectionDemo {
 	public static void main(String[] args) {
-		//创建集合对象?
+		//创建集合对象
+//		Collection 接口不能实例化
+		//抽象类 子类调用
+		Collection c = new ArrayList();
 		
+		c.add("hello");
+		c.add("world");
+		
+		System.out.println("c:" +c);
+		//清空所有元素
+		//c.clear();
+		
+		System.out.println("remove:"+c.remove("hello"));//移除一个元素
+		System.out.println("remove:"+c.remove("java"));
+		System.out.println("c:" +c);
+		
+		System.out.println("contains:" + c.contains("hello"));//判断是否包含
+		System.out.println("c:"+c);
+		
+		//
+		System.out.println("size:" + c.size());
 	}
 }
