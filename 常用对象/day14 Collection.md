@@ -70,7 +70,7 @@ List的子类特点
 		
 		分析：
 		要安全吗?
-			要：Vector(即使要，也不使用这个，后面再说)
-			不要：ArrayList或者LinkedList
+			要：Vector
+			不要：ArrayList 最常用或者LinkedList
 				查询多；ArrayList
 				增删多：LinkedList
