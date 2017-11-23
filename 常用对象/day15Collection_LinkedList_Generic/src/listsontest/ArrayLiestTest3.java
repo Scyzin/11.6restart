@@ -11,10 +11,12 @@ import listson.Student;
  * contains方法的底层依赖的是equals方法。学生类没有eqauls方法，
  * 用的是object的equals，比较的是地址值。要重写学生类的equals
  * 
+ * 改用student的泛型.
+ * 
  */
 public class ArrayLiestTest3 {
 	public static void main(String[] args) {
-		ArrayList a = new ArrayList();
+		ArrayList<Student> a = new ArrayList<Student>();
 
 		Student s1 = new Student(10, "陈尊");
 		Student s2 = new Student(10, "陈尊");
@@ -28,13 +30,13 @@ public class ArrayLiestTest3 {
 		a.add(s4);
 		a.add(s5);
 		
-		ArrayList b = new ArrayList();
+		ArrayList<Student> b = new ArrayList<Student>();
 
 		for (int x = 0; x < a.size(); x++) {
 			// 为啥不能用指定的集合？
 
 			if (!b.contains((Student) a.get(x))) {
-				b.add((Student) a.get(x));
+				b.add( a.get(x));
 			}
 		}
 		//下面代码出错了
@@ -48,8 +50,8 @@ public class ArrayLiestTest3 {
 			}
 		}*/
 		
-		for(Iterator it = b.iterator();it.hasNext();) {
-			System.out.println((Student)it.next());
+		for(Iterator<Student> it = b.iterator();it.hasNext();) {
+			System.out.println(it.next());
 
 	}
 }
