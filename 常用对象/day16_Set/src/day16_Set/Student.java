@@ -1,10 +1,10 @@
 package day16_Set;
 
 /**
- * @author Administrator
+ * @author Administrator 要实现自然排序 要实现comparable接口
  * 
  */
-public class Student {
+public class Student implements Comparable<Student> {
 	private String name;
 	private int age;
 
@@ -62,7 +62,18 @@ public class Student {
 		return true;
 	}
 
-	
+	@Override
+	public int compareTo(Student s) {
+		// TODO Auto-generated method stub
+		// 主要条件：姓名长度
+		int num = this.name.length() - s.name.length();
+		// 次要条件：姓名长度相同，不代表内容相同
+		int num2 = num == 0 ? this.name.compareTo(s.name) : num;
+		// 不代表年龄相同
+		int num3 = num2 == 0 ? this.age - s.age : num2;
+		return num3;
+
+	}
 
 	// @Override
 	// public int hashCode() {
@@ -97,4 +108,3 @@ public class Student {
 	// }
 
 }
-

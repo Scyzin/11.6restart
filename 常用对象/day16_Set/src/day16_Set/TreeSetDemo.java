@@ -8,6 +8,7 @@ import java.util.TreeSet;
  * 
  * 		或者根据创建 set 时提供的 Comparator 进行排序
 		具体取决于使用的构造方法。 
+		比较器排序
 			
  * 	排序和唯一
  */

@@ -7,6 +7,7 @@ import java.util.LinkedHashSet;
  * 		Set 接口的哈希表和链接列表实现
  * 哈希表保证元素的唯一性。
  * 链表保证元素有序。(存储和取出是一致)
+ * 
  */
 public class LinkedHashSetDemo {
 	public static void main(String[] args) {
