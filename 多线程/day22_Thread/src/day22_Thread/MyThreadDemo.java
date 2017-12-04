@@ -8,6 +8,7 @@ package day22_Thread;
  * 		重写run()方法
  * 		创建对象
  * 		启动进程
+ * 
  * 获取线程的名称
  * 		public final String getName()
  * 如何设置线程对象的名称呢?

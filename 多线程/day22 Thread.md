@@ -33,5 +33,66 @@ CPU在做着程序间的高效切换让我们觉得是同时进行的。
 **并发**是物理上同时发生，指在某一个时间点同时运行多个程序。
 
 **jvm虚拟机的启动**  
-jvm启动相当于启动了一个进程，该进程创建了一个主线程调用main方法垃圾回收期也会先启动，否则会内存溢出。
+jvm启动相当于启动了一个进程，该进程创建了一个主线程调用main方法垃圾回收期也会启动，否则会内存溢出。
 jvm的启动是多线程的，至少是两个线程。
+
+**多线程的实现方案**
+
+1. 继承Thread类  
+
+		创建自定义类继承Thread类
+		重写run方法
+		创建对象
+		启动线程  
+2. 实现runnable接口  **多用这个**
+
+		创建runnable接口
+		重写run方法
+		创建runnable类的对象
+		创建thread的对象，并将上面的接口对象作为构造参数传递
+
+**线程控制**  
+线程休眠  
+
+		public static void sleep(long millis)  
+线程加入
+
+		public final void join()  
+线程礼让
+
+		public static void yield()
+后台线程
+
+		public final void setDaemon(boolean on)
+中断线程
+
+		public final void stop()
+		public void interrupt()
+**线程的生命周期**  
+
+		A:新建
+		B:就绪
+		C:运行
+		D:阻塞
+		E:死亡  
+**多线程的安全问题**  
+如何判断？  
+
+		A:是否有多线程环境
+		B:是否有共享数据
+		C:是否有多条语句操作共享数据
+如何解决？
+
+		A:同步代码块
+			synchronized(对象) {
+				需要被同步的代码;
+			}
+			这里的锁对象可以是任意对象。
+			
+		B:同步方法
+			把同步加在方法上。
+			这里的锁对象是this
+			
+		C:静态同步方法
+			把同步加在方法上。
+			这里的锁对象是当前类的字节码文件对象
