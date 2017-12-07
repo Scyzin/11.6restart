@@ -4,7 +4,8 @@ JAVA提供了两个包：AWT和SWING，轻重。
 
 Component 组件
 
-1:如何让Netbeans的东西Eclipse能访问。
+1:如何让Netbeans的东西Eclipse能访问。  
+Netbeans是可以快捷编辑GUI的一个IDE
 
 	在Eclipse中创建项目，把Netbeans项目的src下的东西给拿过来即可。
 	注意：修改项目编码为UTF-8
@@ -30,6 +31,13 @@ Component 组件
 		B:事件
 		C:事件处理
 		D:事件监听
+		1:确定事件源（容器或组件）
+		2:通过事件源对象的addXXXListener()方法将侦听器注册到该事件源上。
+		3:该方法中接收XXXListener的子类对象，或者XXXListener的子类XXXAdapter的子类对象。
+		4:一般用匿名内部类来表示。
+		在覆盖方法的时候，方法的参数一般是XXXEvent类型的变量接收。
+		5:事件触发后会把事件打包成对象传递给该变量。（其中包括事件源对象。通过getSource()或者，getComponent()获取。）
+
 (5)适配器模式(理解)
 
 		A:接口
