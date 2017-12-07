@@ -97,6 +97,7 @@ public class ColorDemo {
 						f.setBackground(Color.WHITE);
 					}
 				});
+				f.setVisible(true);
 	}
 }
 
