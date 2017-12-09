@@ -1,0 +1,2 @@
+ClassName =test1.Teacher
+methodName =love
