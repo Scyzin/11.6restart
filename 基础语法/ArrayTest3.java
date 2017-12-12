@@ -23,6 +23,7 @@ class ArrayTest3{
 			}
 		}
 		
+		
 	}
 	public static void printArray(int []arr){
 		System.out.print("[");
