@@ -807,8 +807,466 @@ F3查看，或者选中类名ctrl+点击
 修改项目名得改配置.project <name>里面的名字。  
 ### debug   
 
-双击有效程序行，设置断点。  
-debug as 调试  
-f6一行行运行调试  
+	双击有效程序行，设置断点。  
+	debug as 调试  
+	f6一行行运行调试  
 **如何去断点**：debug视图variables界面里的breakpoints 点击双叉
-## 四、常用对象 ##
+## 四、常用类 ##
+### Object ###
+Object类是类结构层次的根类，每个类都直接或间接的继承Object  
+
+
+
+1. **Objcet类的方法**：  
+
+	public int hashcode():  
+			
+			返回该对象的哈希码值。根据地址值换算出来的
+	public final Class getClass()：
+	
+			返回此 Object 的运行时类    
+			Class类中的方法：public String getName()以 String 的形式返回此 Class 对象所表示的实体  
+	**public String toString**():  
+	
+			返回该对象的字符串表示。默认是由类的全路径+'@'+哈希值的十六进制表示。  
+			建议重写该类的方法:return 你想要的字符串。
+			 		也可以通过快捷键，自动生成toString 				
+			 		直接输出一个对象的名称，就是调用toString方法
+	**public boolean equals(Object obj)**
+	
+			指示其他某个对象是否与此对象“相等”。默认比较的是地址。   
+			this - s1   obj -s2	  
+			引用类型：这里的对象指的是地址。  
+		重写？  
+			一般都是用来比较对象的成员变量是否相同。  
+			最终版alt + shift + s + h  重写hashcode和equal
+	 
+	protected void finalize()
+	
+			当垃圾回收器确定不存在对该对象的更多引用时，由对象的垃圾回收器调用此方法。  
+			子类重写 finalize 方法，以配置系统资源或执行其他清除。   
+	
+	protected Object clone()
+	
+			创建并返回此对象的一个副本
+			标记接口  
+			cloneable:此类实现了cloneable接口，指示object.clone()方法可以合法地对该类实例进行字段复制。    
+			克隆后，更改值不影响原来的值。
+
+1. ==和equals()的区别?  
+
+	    A:==
+		    基本类型：比较的是值是否相同
+		    引用类型：比较的是地址值是否相同
+	    B:equals()
+		    只能比较引用类型。默认情况下，比较的是地址值是否相同。
+		    但是，我们可以根据自己的需要重写该方法。
+### Scanner ###
+
+    	Scanner sc = new Scanner(System.in)  
+    	has nextxxx  判断是否为某种类型
+    	nextxxx  返回某种类型
+    	public int nextInt()  
+    	public String nextLine()
+
+### String ###
+字符串是常量，一但被赋值，就不能改变。  
+
+1. **构造方法**：  
+		
+		常用	：	String = "hello";
+		public String()	无参构造
+		public String(byte[] bytes)	把字节数组转换为字符串
+		public String(byte[] bytes,int offset,int length)		把字节数组的一部分转换为字符串
+		public String(char[] value)	把字符数组转换为字符串
+		public String(char[] value,int offset,int count)	把字符数组的一部分转换为字符串
+		public String(String original)	将字符常量转换为字符串
+  
+1. **判断功能**  
+
+			boolean equals(Object obj) 比较字符串内容是否相同
+			boolean equalsIgnoreCase(String str) 比较字符串内容是否相同，忽略大小写
+			boolean contains(String str) 判断大串里面是否含有小串
+			boolean startsWith(String str) 判断是否以某个字符串开头
+			boolean endsWith(String str) 判断是否以某个字符串结尾
+			boolean isEmpty() 判断字符串是否为空
+
+1. **获取功能**  
+
+			int length()	获取字符串长度
+			char charAt(int index)	获取索引位置上的字符
+			int indexOf(int ch)	 获取字符第一次出现的索引位置
+			int indexOf(String str)  获取字符串第一次出现的索引位置
+			int indexOf(int ch,int fromIndex)	从该位置开始搜索字符，并返回位置
+			int indexOf(String str,int fromIndex)  从该位置开始搜索字符串，并返回位置
+			String substring(int start)		从开始位置开始截取，并返回一个新的字符串
+			String substring(int start,int end)  返回一个新的字符串，它是此字符串的一个子字符串，包括start,不包括end
+
+1. **转换功能**  
+ 
+			byte[] getBytes()	将String转换成byte，并存储到byte数组内
+			char[] toCharArray()	将String转化为char数组
+			static String valueOf(char[] chs)	字符数组转换为字符串
+			static String valueOf(int i)	int类型转化为字符串
+			String toLowerCase()	产生一个新字符串，字符串转化为小写的
+			String toUpperCase()	产生一个新字符串，字符串转化为答谢的
+			String concat(String str)	字符串连接
+
+1. **其他功能**  
+
+			a:替换功能 
+				String replace(char old,char new)	字符替换
+				String replace(String old,String new)	字符串替换
+			b:去空格功能	
+				String trim()	去除字符串两端空格
+			c:按字典比较功能	按ASCII表去比较顺序
+				int compareTo(String str)	
+				int compareToIgnoreCase(String str) 忽略大小写比较
+
+### String buffer ###
+
+**线程安全的可变字符串**  
+
+		每次string都会创建新对象，耗时，耗空间，StringBuffer可以解决这个问题。  
+		线程安全：线程同步  医院、银行网站  
+		不安全：不同步-效率高些	互联网网站、论坛  
+
+1. toString():任何类型都可以通过这个方法，转换为字符串类型  
+
+			String -- StringBuffer
+				构造方法
+			StringBuffer -- String
+				toString()方法
+1. **构造方法**  
+
+	    public StringBuffer(int capacity)  指定容量值的缓冲区，默认为16
+	    public StringBuffer() 	造了一个缓冲区
+	    public StringBuffer(String str)		指定字符创内容的缓冲区
+		length为实际值，
+
+1. **添加功能**
+
+	    public StringBuffer append()	添加任意类型到字符创缓冲区，并返回字符串缓冲区本身。可以链式编程
+	    public StringBuffer insert(int offset,String str)	在指定位置后添加数据，并返回字符串本身
+
+1. **删除功能**
+
+	    public StringBuffer deleteCharAt(int index)	删除指定位置上的字符
+	    public StringBuffer delete(int start,int end)	移除次序列的字符创中字符，不包括结束位置
+		StringBuffer delete(0,s.length());移除所有的数据
+
+1. **替换功能**
+	
+	    public StringBuffer replace(int start,int end,String str)	用字符创替换指定位置。
+	
+1. **反转功能**
+
+    	public StringBuffer reverse()	反转字符串
+
+1. **截取功能**
+
+		返回值是String类型
+	    public String substring(int start)	从指定位置截取
+	    public String substring(int start,int end) 	从指定位置上开始截取到截止位置，不包括截止位置。
+判断是否为回文串：return new StringBuffer(s).reverse().toString().equals(s);
+
+String、StingBuffer、StringBuilder区别？
+
+		String内容不可变，后面两者可变。
+		StringBuffer：同步的，数据安全，效率低。
+		StringBuilder：不同步的，数据不安全，效率高。
+StringBuffer和数组的区别?
+
+		 都是容器，用来装其他的数据
+		 但是StringBuffer的数据最终是一个字符串数据
+		 数组的数据可以是多种，但最后是同一种的。
+形式参数问题？
+
+		 String、StringBuffer
+		 String作为形参，效果和基本类型相似。字符串是常量值。
+		 StringBuffer是引用类型。赋值时，不改变外部的。做操作时，会改变
+### Arrays工具类 ###
+
+1. **排序**  
+冒泡排序；快速排序；选择排序
+
+    	public static void sort(数组):底层是快速排序
+    	Arrays.sort()
+
+		A:冒泡排序
+			相邻元素两两比较，大的往后放，第一次完毕，最大值出现在了最大索引处。同理，其他的元素就可以排好。
+			
+			public static void bubbleSort(int[] arr) {
+				for(int x=0; x<arr.length-1; x++) {
+					for(int y=0; y<arr.length-1-x; y++) {
+						if(arr[y] > arr[y+1]) {
+							int temp = arr[y];
+							arr[y] = arr[y+1];
+							arr[y+1] = temp;
+						}
+					}
+				}
+			}
+			
+		B:选择排序
+			把0索引的元素，和索引1以后的元素都进行比较，第一次完毕，最小值出现在了0索引。同理，其他的元素就可以排好。
+			public static void selectSort(int[] arr) {
+				for(int x=0; x<arr.length-1; x++) {
+					for(int y=x+1; y<arr.length; y++) {
+						if(arr[y] < arr[x]) {
+							int temp = arr[x];
+							arr[x] = arr[y];
+							arr[y] = temp;
+						}
+					}
+				}
+			}
+
+1. **查找**  
+基本查找；针对数组无序的情况  
+二分查找；针对数组有序的情况
+
+    	public static int binarySearch(数组,key):
+   			Arrays.binarySearch();
+		A:基本查找
+			针对数组无序的情况
+			
+			public static int getIndex(int[] arr,int value) {
+				int index = -1;
+				
+				for(int x=0; x<arr.length; x++) {
+					if(arr[x] == value) {
+						index = x;
+						break;
+					}
+				}
+				
+				return index;
+			}
+		B:二分查找(折半查找)
+			针对数组有序的情况(千万不要先排序，在查找)
+			
+			public static int binarySearch(int[] arr,int value) {
+				int min = 0;
+				int max = arr.length-1;
+				int mid = (min+max)/2;
+				
+				while(arr[mid] != value) {
+					if(arr[mid] > value) {
+						max = mid - 1;
+					}else if(arr[mid] < value) {
+						min = mid + 1;
+					}
+					
+					if(min > max) {
+						return -1;
+					}
+					
+					mid = (min+max)/2;
+				}
+				
+				return mid;
+			}
+**转换成字符串**
+
+    	public static String toString():
+   		 	Arrays.toString(arr1)
+
+### Integer ###
+
+1. 为了让基本类型的数据进行更多的操作，Java就为每种基本类型提供了对应的包装类类型。可以在对象中定义更多的功能方法操作数据。
+
+		byte 		Byte
+		short		Short
+		int			Integer
+		long		Long
+		float		Float
+		double		Double
+		char		Character
+		boolean		Boolean
+
+		Integer类中有进制转换方法：直接通过方法调用，该指定的整数转换为对应进制。
+		static int parseInt(String s, int radix)  其余进制转为指定进制。这个方法也是将字符串转换为Integer类型。
+		static String toString(int i, int radix)  返回指定进制的整数，进制范围2~36。0-9,a-z总共36个
+2. Integer的构造方法
+
+	    Integer i = new Integer(int a);  
+	    Integer i = new Integer(string str);	这个字符必须是数字
+1. String和int的相互转换  
+ 
+		A:String -- int
+			Integer.parseInt("100");
+		B:int -- String
+			String.valueOf(100);
+
+1. JDK5的新特性  
+		
+		Integer x = new Integer(4);可以直接写成
+		Integer x = 4;//自动装箱。
+		x  = x + 5;//自动拆箱。通过Integer.valueOf方法。
+
+		自动装箱	基本类型--引用类型
+		自动拆箱	引用类型--基本类型 
+
+		Integer类有个缓冲池。针对-128到127之间的数据，做了一个数据缓冲池，如果数据是该范围内的，每次并不创建新的空间
+	 
+		注意：Integer的数据直接赋值，如果在-128到127之间，会直接从缓冲池里获取数据
+
+Character
+
+ 构造方法  
+
+   		 Character ch = new Character('a');	类在对象中包装一个基本类型char的值。
+
+
+方法
+	
+		public static boolean isUpperCase(char ch)	字符是否为大写
+		public static boolean isLowerCase(char ch)	是否为小写
+		public static boolean isDigit(char ch)	是否为数字
+		public static char toUpperCase(char ch)		字符转成大写
+		public static char toLowerCase(char ch)		字符转成小写
+正则表达式：
+
+	(1)就是符合一定规则的字符串
+	(2)常见规则
+		A:字符
+			x 字符 x。举例：'a'表示字符a
+			\\ 反斜线字符。
+			\n 新行（换行）符 ('\u000A') 
+			\r 回车符 ('\u000D')
+			
+		B:字符类
+			[abc] a、b 或 c（简单类） 
+			[^abc] 任何字符，除了 a、b 或 c（否定） 
+			[a-zA-Z] a到 z 或 A到 Z，两头的字母包括在内（范围） 
+			[0-9] 0到9的字符都包括
+			
+		C:预定义字符类
+			. 任何字符。我的就是.字符本身，怎么表示呢? \.
+			\d 数字：[0-9]
+			\w 单词字符：[a-zA-Z_0-9]
+				在正则表达式里面组成单词的东西必须有这些东西组成
+
+		D:边界匹配器
+			^ 行的开头 
+			$ 行的结尾 
+			\b 单词边界
+				就是不是单词字符的地方。
+				举例：hello world?haha;xixi
+			
+		E:Greedy 数量词 
+			X? X，一次或一次也没有
+			X* X，零次或多次
+			X+ X，一次或多次
+			X{n} X，恰好 n 次 
+			X{n,} X，至少 n 次 
+			X{n,m} X，至少 n 次，但是不超过 m 次 
+	(3)常见功能：(分别用的是谁呢?)
+		A:判断功能
+			String类的public boolean matches(String regex)
+		B:分割功能
+			String类的public String[] split(String regex)
+		C:替换功能
+			String类的public String replaceAll(String regex,String replacement)
+		D:获取功能
+			Pattern和Matcher
+				Pattern p = Pattern.compile("a*b");
+				Matcher m = p.matcher("aaaaab");
+				
+				find():查找存不存在
+				group():获取刚才查找过的数据
+### Math ###
+
+		public static int abs(int a)：绝对值
+		public static double ceil(double a):向上取整
+		public static double floor(double a):向下取整
+		public static int max(int a,int b):最大值 (min自学)
+		public static double pow(double a,double b):a的b次幂
+		public static double random():随机数 [0.0,1.0)
+		public static int round(float a) 四舍五入(参数为double的自学)
+		public static double sqrt(double a):正平方根  
+Random 
+
+		Random() 
+		          创建一个新的随机数生成器。是当前时间的毫秒值。
+		    Random(long seed) 
+		用单个 long 种子创建一个新的随机数生成器。
+		给定种子后，每次产生的随机数是相同的。
+		 
+		成员方法：
+		public int nextInt()		int范围内的随机数
+		public int nextInt(int n)	[0-n)
+### System ###
+
+System 类包含一些有用的类字段和方法。它不能被实例化。 
+
+		static void gc() 
+	        运行垃圾回收器。 
+	        调用Object类的finalize()方法,并重写
+	        大量执行对象的释放时，才调用垃圾回收才是最好的。     
+> System.gc()可用于垃圾回收。当使用System.gc()回收某个对象所占用的内存之前，通过要求程序调用适当的方法来清理资源。在没有明确指定资源清理的情况下，Java提高了默认机制来清理该对象的资源，就是调用Object类的finalize()方法。finalize()方法的作用是释放一个对象占用的内存空间时，会被JVM调用。而子类重写该方法，就可以清理对象占用的资源，该方法有没有链式调用，所以必须手动实现。
+从程序的运行结果可以发现，执行System.gc()前，系统会自动调用finalize()方法清除对象占有的资源，通过super.finalize()方式可以实现从下到上的finalize()方法的调用，即先释放自己的资源，再去释放父类的资源。
+但是，不要在程序中频繁的调用垃圾回收，因为每一次执行垃圾回收，jvm都会强制启动垃圾回收器运行，这会耗费更多的系统资源，会与正常的Java程序运行争抢资源，只有在执行大量的对象的释放，才调用垃圾回收最好
+
+		static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length) 
+        	从指定源数组中复制一个数组，复制从指定的位置开始，到目标数组的指定位置结束。   
+		static void exit(int status) 
+          	终止当前正在运行的 Java 虚拟机。 后面的程序不运行了
+		static long currentTimeMillis() 
+          	返回以毫秒为单位的当前时间。   
+BigInteger
+
+	BigInteger类概述
+		可以让超过Integer范围内的数据进行运算
+	构造方法
+		public BigInteger(String val)
+	成员方法
+		public BigInteger add(BigInteger val)
+		public BigInteger subtract(BigInteger val)
+		public BigInteger multiply(BigInteger val)
+		public BigInteger divide(BigInteger val)
+		public BigInteger[] divideAndRemainder(BigInteger val)
+BigDecimal
+
+	由于在运算的时候，float类型和double很容易丢失精度。所以，为了能精确的表示、计算浮点数，Java提供了BigDecimal
+	BigDecimal类概述
+		不可变的、任意精度的有符号十进制数。
+	构造方法
+		BigDecimal(BigInteger val) 
+          将 BigInteger 转换为 BigDecimal。
+		public BigDecimal(String val)	double类型转换的可能出问题
+	成员方法	
+		public BigDecimal add(BigDecimal augend)
+		public BigDecimal subtract(BigDecimal subtrahend)
+		public BigDecimal multiply(BigDecimal multiplicand)
+		public BigDecimal divide(BigDecimal divisor)
+		public BigDecimal divide(BigDecimal divisor,int scale,
+		     int roundingMode)
+
+### Date/DateFormat ###
+	(1)Date是日期类，可以精确到毫秒。
+		A:构造方法
+			Date()	 分配 Date 对象并初始化此对象，以表示分配它的时间（精确到毫秒）。
+			Date(long time)		根据给定毫秒创建日期对象
+		B:成员方法
+			getTime()	从Date得到一个毫秒值
+			setTime(long time)	把一个毫秒值转换为Date
+	(2)DateFormat针对日期进行格式化和针对字符串进行解析的类，但是是抽象类，所以使用其子类SimpleDateFormat
+		A:SimpleDateFormat(String pattern) 给定模式
+			yyyy-MM-dd HH:mm:ss
+		B:日期和字符串的转换
+			a:Date -- String
+				public final String format(Date date)
+			b:String -- Date
+				public Date parse(String source)
+### Calendar ###
+
+	calendar是获取所有的时间字段
+	日历字段： YEAR年、MONTH月、DATE 日DAY_OF_MONTH、HOUR
+		public static Calendar getInstance():返回一个子类对象
+				Calendar rightNow = Calendar.getInstance();		
+		public int get(int field):返回给定日历字段的值
+				int month = rightNow.get(Calendar.MONTH);
+		public void add(int field,int amount)  根据日历字段和对应时间，来对当前日历进行操作
+		public final void set(int year,int month,int date)	设定当前的年月日
